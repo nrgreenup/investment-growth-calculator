@@ -56,8 +56,9 @@ ContributionTiming = Literal["start", "end"]
 
 def toFutureValueOfContribution(annualRate: float, contributionAmount: int, frequency: AllowedContributionFrequencies, durationYears: float, timing: ContributionTiming = "end") -> float:
     """
-    Compute the future value of a defined contribution scheme (growth rate, amount, duration, timing of payments within period).
+    Compute future value given a defined contribution scheme (growth rate, amount, duration, timing of payments within period).
     """
+    
     contributionsPerYear = ContributionFrequency[frequency]
     ratePerPeriod = toEquivalentRate(annualRate, contributionsPerYear, 1) / contributionsPerYear
     totalPeriods = contributionsPerYear * durationYears
